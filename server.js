@@ -8,7 +8,7 @@
 * 
 *  Name: Mahshid Ebrahim Shirazi         Student ID: 168024222       Date: 01/27/2024
 *
-* Published URL: https://lego-set-collection.onrender.com/
+* Published URL: https://real-pear-beaver-garb.cyclic.app/
 ********************************************************************************/
 
 const legoData = require("./modules/legoSets")
