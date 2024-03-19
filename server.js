@@ -8,12 +8,16 @@
 * 
 *  Name: Mahshid Ebrahim Shirazi         Student ID: 168024222       Date: 01/27/2024
 *
+* Published URL: https://lego-set-collection.onrender.com/
 ********************************************************************************/
+
 const legoData = require("./modules/legoSets")
 const express = require('express')
 const path = require('path')
 const app = express()
 const HTTP_PORT = process.env.PORT || 8080
+
+app.set('view engine', 'ejs');
 
 app.use(express.static("public"))
 
@@ -22,29 +26,30 @@ app.listen(HTTP_PORT, () => console.log(`server listening on: ${HTTP_PORT}`))
 })
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "/views/home.html"))
-})
+  res.render("home");
+});
 
 app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, "/views/about.html"))
-})
+    const page = '/about';
+    res.render("about", { page });
+});
+
 
 app.get('/lego/sets', (req, res) => {
   if (req.query.theme) {
       const theme  = req.query.theme
-      legoData.getSetsByTheme(theme)
-          .then(data => res.json(data))
-          .catch(err => {
-              console.error(err)
-              res.status(404).send(`Sets not found for the theme: ${theme}`)
-          })
+      legoData.getSetsByTheme(theme).then((data) => {
+        res.render("sets", { sets: data, page: '/lego/sets' });
+      }).catch((err) => {
+        res.status(404).render("404", {message: "No sets found for the specific set number."});
+      })
   } else {
       legoData.getAllSets()
       .then((data) => {
-        res.json(data)
+        res.render("sets", { sets: data, page: '/lego/sets' });
       })
-      .catch((reason) => {
-        console.log(reason)
+      .catch((err) => {
+        res.status(404).render("404", {message: "No sets found for the specific set number."});
       })
   }
 })
@@ -52,20 +57,12 @@ app.get('/lego/sets', (req, res) => {
 app.get('/lego/sets/:setNum', (req, res) => {
   const setNum = req.params.setNum;
   legoData.getSetByNum(setNum)
-      .then(data => {
-          if (data) {
-              res.json(data);
-          } else {
-              res.status(404).send("Set not found with number: " + setNum);
-          }
-      })
-      .catch(err => {
-          console.error(err);
-          res.status(404).send("Error finding set with number: " + setNum);
-      });
+  .then((set) => res.render('set', { sets: [set], page: '/lego/sets/:setNum' })) // Note: Pass `set` or an array containing `set`
+  .catch((error) => res.status(404).render('404', { message: "No sets found for the specific set number." }));
+});
 
-})
 
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "/views/404.html"));
+  res.status(404).render("404", { message: "I'm sorry, we're unable to find what you're looking for" });
+
 });

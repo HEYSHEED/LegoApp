@@ -1,0 +1,14 @@
+<div class="bg-purple-600 py-4">
+    <div class="container mx-auto flex justify-between items-center px-4">
+        <a class="text-white text-2xl font-bold" href="/">Lego Collection</a>
+        <ul class="menu menu-horizontal text-white">
+            <div class="navbar-center hidden sm:flex items-center">
+                <ul class="flex space-x-4">
+                    <li><a class="<%= (page === '/lego/sets') ? 'active' : '' %>" href="/lego/sets">View Collection</a></li>
+                    <li><span>&nbsp;&nbsp;</span></li>
+                    <li><a class="<%= (page === '/about') ? 'active' : '' %>" href="/about">About</a></li>
+                </ul>
+            </div>
+        </ul>
+    </div>
+</div>

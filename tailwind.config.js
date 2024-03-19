@@ -10,15 +10,17 @@
 *
 ********************************************************************************/
 module.exports = {
-  content: [`./views/**/*.html`],
-    theme: {
-      extend: {
-      
-      },
+  content: [
+    './views/**/*.ejs', 
+    './views/**/*.js',  
+  ],
+  theme: {
+    extend: {
     },
-    plugins: [
-      require('@tailwindcss/typography'),
-      require('daisyui'),
-    ],
-  };
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('daisyui'),
   
+  ],
+};

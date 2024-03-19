@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <title>Lego Collection - Sets</title>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <% include('partials/navbar', {page: '/lego/sets/'}) %>
+
+    <div class="container mx-auto mt-4 p-4">
+        <div class="bg-blue-200 p-4 rounded">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold">Lego Collection - Sets</h1>
+                <p class="mt-2"></p>
+            </div>
+        </div>
+
+        <!-- Display Lego sets -->
+        <% sets.forEach(function(set) { %>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden mt-4">
+                <div class="flex items-center p-4">
+                    <img src="<%= set.img_url %>" alt="<%= set.name %>" class="w-48 h-auto mr-4">
+                    <div class="flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-2xl font-semibold"><%= set.name %></h2>
+                            <p class="text-gray-600">Year Released: <span class="font-semibold"><%= set.year %></span></p>
+                            <p class="text-gray-600">Number of Parts: <span class="font-semibold"><%= set.num_parts %></span></p>
+                        </div>
+                        <button class="mt-4 px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-200" onclick="goBack()">Return</button>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <script>
+        // Function to navigate back
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
+</html>

@@ -3,52 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/main.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>About - Lego Collection</title>
 </head>
 <body>
-    <div class="navbar bg-purple-900">
-        <div class="flex-1">
-            <a href="/" class="text-white hover:text-gray-400">Lego Collection</a>
-        </div>
-        <div class="navbar-center hidden sm:flex">
-            <ul class="menu menu-horizontal px-1">
-                <li><a href="/about" class="active">About</a></li>
-                <li class="w-32">
-                    <details class="open:ring-1 ring-gray-300 ring-opacity-50 rounded">
-                        <summary class="cursor-pointer text-white hover:text-gray-400">
-                            Theme
-                        </summary>
-                        <ul class="dropdown-content menu p-2 bg-purple-700 right-0">
-                            <li>
-                                <a href="/lego/sets?theme=Books">Books</a>
-                            </li>
-                            <li>
-                                <a href="/lego/sets?theme=Early Creator">Early Creator</a>
-                            </li>
-                            <li>
-                                <a href="/lego/sets?theme=Basic Set">Basic Set</a>
-                            </li>
-                        </ul>
-                    </details>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <%- include('partials/navbar', { page: '/about' }) %>
 
     <div class="container mx-auto mt-4 p-4">
-        <div class="hero bg-base-200 p-4 rounded">
+        <div class="hero bg-gray-200 p-4 rounded">
             <div class="hero-content text-center">
-                <div class="max-w-md">
+                <div class="max-w-md mx-auto">
                     <h1 class="text-4xl font-bold">About</h1>
                     <p class="py-6">All about me and LEGO Brickmaster Series.</p>
                 </div>
             </div>
         </div>
-
+    
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             <div>
-                <img src="/images/sheed.jpg" alt="A representation of you" class="rounded-lg shadow-lg">
+                <img src="/images/sheed.jpg" alt="A representation of you" class="rounded-lg shadow-lg mx-auto md:mx-0">
             </div>
             <div class="flex flex-col justify-center">
                 <p class="text-lg">
@@ -57,5 +30,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+    

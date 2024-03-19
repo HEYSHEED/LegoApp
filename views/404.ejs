@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>404 Not Found - Lego Collection</title>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <%- include('partials/navbar', {page: '/404'}) %>
+
+    <div class="container mx-auto mt-4">
+        <div class="hero bg-gray-200 min-h-screen flex justify-center items-center">
+            <div class="text-center">
+                <img src="/images/404.jpg" alt="404 Not Found" class="mb-8"/>
+                <h1 class="text-6xl font-bold mb-8">Oops!</h1>
+                <!-- Display the error message -->
+                <p class="mb-5 text-xl"><%= message %></p>
+                <a href="/" class="btn btn-primary">Return Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

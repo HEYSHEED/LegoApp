@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lego Collection</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <%- include('partials/navbar', { page: '/Home' }) %>
+
+    <div class="container mt-4 mx-auto">
+        <div class="bg-gray-200 p-8 rounded-lg text-center">
+            <h1 class="mb-5 text-5xl font-bold">Welcome to the Lego Collection</h1>
+            <p class="mb-5">
+                Dive into the world of creativity and imagination with our diverse Lego sets. Start your next adventure here!
+            </p>
+            <a href="/lego/sets" class="btn btn-primary bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded">Explore Sets</a>
+
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+            <div class="bg-gray-100 shadow-xl rounded-lg">
+                <img src="https://cdn.rebrickable.com/media/sets/0756672805-1.jpg" alt="Lego Set" class="w-full h-64 object-cover rounded-t-lg">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold mb-2">Pirates: Brickmaster</h2>
+                    <p class="mb-4">Published by DK Publishing (Dorling Kindersley) as boxed hardcover on August 31, 2009. Part of the LEGO Brickmaster Series, the book contains 48 pages.</p>
+                    <a href="/lego/sets/0756672805-1" class="btn btn-primary bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded">View Set</a>
+                </div>
+            </div>
+
+            <div class="bg-gray-100 shadow-xl rounded-lg">
+                <img src="https://cdn.rebrickable.com/media/sets/0756668530-1.jpg" alt="Lego Set" class="w-full h-64 object-cover rounded-t-lg">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold mb-2">Atlantis: Brickmaster</h2>
+                    <p class="mb-4">Published by DK Publishing (Dorling Kindersley) as boxed hardcover on August 16, 2010. Part of the LEGO Brickmaster Series, the book contains 48 pages.</p>
+                    <a href="/lego/sets/0756668530-1" class="btn btn-primary bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded">View Set</a>
+                </div>
+            </div>
+
+            <div class="bg-gray-100 shadow-xl rounded-lg">
+                <img src="https://cdn.rebrickable.com/media/sets/0756682762-1.jpg" alt="Lego Set" class="w-full h-64 object-cover rounded-t-lg">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold mb-2">Ninjago: Brickmaster</h2>
+                    <p class="mb-4">Published by DK Publishing (Dorling Kindersley) as hardcover on August 1, 2011. Part of the LEGO Brickmaster Series, the book contains 48 pages.</p>
+                    <a href="/lego/sets/0756682762-1" class="btn btn-primary bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded">View Set</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

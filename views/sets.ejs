@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Lego Collection - Sets</title>
+</head>
+<body>
+
+    <%- include('partials/navbar', { page: '/sets' }) %>
+
+    <div class="container mx-auto mt-4 p-4">
+        <div class="hero bg-gray-200 p-4 rounded">
+            <div class="hero-content text-center">
+                <h1 class="text-4xl font-bold">Collection</h1> <!-- Updated header -->
+                <h1 class="text-3 font">Browse the entire collection. Click the theme to filter by theme</h1>
+            </div>
+        </div>
+
+        <!-- Filter buttons -->
+        <div class="flex justify-center my-4">
+            <!-- Hard-coded links to filter the table -->
+            <a href="/lego/sets?theme=Technic" class="btn btn-xs mr-2 bg-purple-600 text-white px-3 py-1 rounded-md">Technic</a>
+            <a href="/lego/sets?theme=Books" class="btn btn-xs mr-2 bg-purple-600 text-white px-3 py-1 rounded-md">Books</a>
+            <a href="/lego/sets?theme=Supplemental" class="btn btn-xs mr-2 bg-purple-600 text-white px-3 py-1 rounded-md">supplemental</a>
+            <a href="/lego/Sets" class="btn btn-xs mr-2 bg-purple-600 text-white px-3 py-1 rounded-md">All sets</a>
+            <!-- Add similar buttons for other themes -->
+        </div>
+        
+        <!-- Table to display Lego set details -->
+        <div class="overflow-x-auto">
+            <table class="table-auto w-full">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="px-4 py-2">Image</th>
+                        <th class="px-4 py-2">Name</th>
+                        <th class="px-4 py-2">Theme</th>
+                        <th class="px-4 py-2">Year</th>
+                        <th class="px-4 py-2">Parts</th>
+                        <th class="px-4 py-2">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Iterate over the sets array and generate table rows -->
+                    <% sets.forEach(function(set) { %>
+                        <tr class="border-b border-gray-200">
+                            <td class="px-4 py-2">
+                                <div class="w-16 h-16">
+                                    <img class="object-cover w-full h-full" src="<%= set.img_url %>" alt="<%= set.name %>">
+                                </div>
+                            </td>
+                            <td class="px-4 py-2"><%= set.name %></td>
+                            <td class="px-4 py-2">
+                                <a href="/lego/sets?theme=<%= set.theme %>" class="btn btn-xs bg-purple-600 text-white px-3 py-1 rounded-md"><%= set.theme %></a>
+                            </td>
+                            <td class="px-4 py-2"><span class="font"><%= set.year %></span></td>
+                            <td class="px-4 py-2"><span class="font"><%= set.num_parts %></span></td>
+                            <td class="px-4 py-2">
+                                <a href="/lego/sets/<%= set.set_num %>" class="btn btn-xs bg-purple-600 text-white px-3 py-1 rounded-md">Details</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
