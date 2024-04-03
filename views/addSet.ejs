@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Add Set - Lego Collection</title>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <%- include('partials/navbar', { page: '/lego/addSet' }) %>
+
+    <div class="container mx-auto mt-4">
+        <div class="hero bg-gray-200 min-h-screen flex justify-center items-center">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mt-8">Add Set</h1> <!-- Added margin-top -->
+                <h1 class="text-3 font mt-4">You can add your new set here...</h1> <!-- Added margin-top -->
+                
+                <!-- Form for adding a new set -->
+                <form action="/lego/addSet" method="POST" class="max-w-md mx-auto grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-6 mt-8"> <!-- Added margin-top -->
+                    <!-- Name -->
+                    <div>
+                        <input type="text" name="name" id="name" placeholder="Name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+                    </div>
+                    
+                    <!-- Year -->
+                    <div>
+                        <input type="number" name="year" id="year" placeholder="Year" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+                    </div>
+                    
+                    <!-- Number of Parts -->
+                    <div>
+                        <input type="number" name="num_parts" id="num_parts" placeholder="Number of Parts" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+                    </div>
+                    
+                    <!-- Image URL -->
+                    <div>
+                        <input type="url" name="img_url" id="img_url" placeholder="Image URL" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+                    </div>
+                    
+                    <!-- Theme ID -->
+                    <div>
+                        <select name="theme_id" id="theme_id" placeholder="Theme" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+                            <% themes.forEach(theme => { %>
+                                <option value="<%= theme.id %>"><%= theme.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    
+                    <!-- Set Number -->
+                    <div>
+                        <input type="text" name="set_num" id="set_num" placeholder="Set Number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div class="col-span-2">
+                        <button type="submit" class="inline-block bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-600 w-full">Add Set</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

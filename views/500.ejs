@@ -1,24 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <title>404 Not Found - Lego Collection</title>
+    <title>500 Internal Server Error - Lego Collection</title>
 </head>
 <body>
 
     <!-- Navbar -->
-    <%- include('partials/navbar', {page: '/404'}) %>
+    <%- include('partials/navbar', { page: '/500' }) %>
 
     <div class="container mx-auto mt-4">
         <div class="hero white min-h-screen flex justify-center items-center">
             <div class="text-center">
-                <img src="/images/404.jpg" alt="404 Not Found" class="mb-8"/>
-                <h1 class="text-6xl font-bold mb-8">Oops!</h1>
+                <img src="/images/500.png" alt="500 Internal Server Error" class="mb-4"/>
+                <h1 class="text-6xl font-bold mb-8">Oops!</h1> <!-- Updated header -->
                 <!-- Display the error message -->
-                <p class="mb-5 text-xl"><%= message %></p>
+                <p class="mb-5 text-xl">Internal Server Error. Please try again later.</p>
                 <a href="/" class="btn btn-primary bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded">Return Home</a>
             </div>
         </div>
