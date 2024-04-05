@@ -90,37 +90,44 @@ app.get('/lego/sets', (req, res) => {
     }
 });
 
-app.get('/lego/editSet/:num', async (req, res) => {
-  try {
-      const setNum = req.params.num
-      const set = await legoData.getSetByNum(setNum)
-      const themes = await legoData.getAllThemes()
-      
-
-      if (!set) {
-          throw new Error('Set not found')
-      }
-      res.render('editSet', { set, themes })
-  } catch (err) {
-      res.status(404).render('404', { message: err.message || 'Unable to find the requested set or themes.' })
-  }
-})
-
-app.post('/lego/editSet', async (req, res) => {
-  try {
-      const setNum = req.body.set_num
-      const setData = req.body
-
-      await legoData.editSet(setNum, setData)
-
-      res.redirect('/lego/sets')
-  } catch (err) {
-      console.error(err)
-      res.render('500', { 
-        message: `I'm sorry, but we have encountered the following error: ${err.message || 'An unexpected error occurred.'}`
+app.get('/lego/editSet/:num', (req, res) => {
+    const setNum = req.params.num;
+    
+    legoData.getSetByNum(setNum)
+      .then(set => {
+        if (!set) {
+          throw new Error('Set not found');
+        }
+        legoData.getAllThemes()
+          .then(themes => {
+            res.render('editSet', { set, themes });
+          })
+          .catch(themesErr => {
+            // If fetching themes fails
+            throw themesErr;
+          });
       })
-  }
-});
+      .catch(err => {
+        res.status(404).render('404', { message: err.message || 'Unable to find the requested set or themes.' });
+      });
+  });
+
+  app.post('/lego/editSet', (req, res) => {
+    const setNum = req.body.set_num;
+    const setData = req.body;
+  
+    legoData.editSet(setNum, setData)
+      .then(() => {
+        res.redirect('/lego/sets');
+      })
+      .catch(err => {
+        console.error(err);
+        res.render('500', { 
+          message: `I'm sorry, but we have encountered the following error: ${err.message || 'An unexpected error occurred.'}` 
+        });
+      });
+  });
+  
 app.get('/lego/deleteSet/:num', (req, res) => {
   const setNum = req.params.num;
   legoData.deleteSet(setNum)
