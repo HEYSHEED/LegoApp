@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/main.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Login</title>
 </head>
 <body>
     <%- include('partials/navbar', {page: '/login'}) %>
 
     <div class="container mx-auto mt-4 mb-8">
-        <div class="hero bg-base-200 p-4 rounded">
+        <div class="hero bg-gray-100 p-8 rounded-lg">
             <div class="hero-content text-center">
                 <div class="max-w-md">
                     <h1 class="text-3xl font-bold mb-5">Login Form</h1>
@@ -19,8 +19,8 @@
             </div>
         </div>
 
-        <div class="mt-6 p-4 rounded shadow-lg">
-            <form action="/login" method="POST" class="bg-white p-6 rounded">
+        <div class="mt-6 p-4 rounded-lg shadow-lg">
+            <form action="/login" method="POST" class="bg-white p-8 rounded-lg">
                 <div class="mb-4">
                     <label for="userName" class="block text-gray-700 text-sm font-bold mb-2">User Name</label>
                     <input type="text" id="userName" name="userName" placeholder="User Name" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -30,7 +30,7 @@
                     <input type="password" id="password" name="password" placeholder="Password" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="flex items-center justify-between">
-                    <button type="submit" class="bg-teal-700 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    <button type="submit" class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Login
                     </button>
                 </div>
